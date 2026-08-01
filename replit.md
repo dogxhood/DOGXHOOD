@@ -1,45 +1,73 @@
-# [Project name]
+# DOGXHOOD Game
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A mobile-first browser meme game hub for the $DXHOOD token on Robinhood Chain. Features three addictive mini-games, a login gate, leaderboard, how-to-play guide, and tokenomics page — all built around the Shiba Inu DOGXHOOD character.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/dogxhood run dev` — run the game frontend (port assigned by workflow)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080, /api)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+
+## GitHub
+
+- Repo: https://github.com/dogxhood/DOGXHOOD
+- GitHub Pages: auto-deployed via GitHub Actions on every push to main (see `.github/workflows/pages.yml`)
+- Push with: `TOKEN=$(printenv GITHUB_TOKEN) && git remote set-url origin "https://dogxhood:${TOKEN}@github.com/dogxhood/DOGXHOOD.git" && git push origin main`
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Game frontend: React + Vite + Tailwind CSS + Framer Motion + wouter
+- API: Express 5 (minimal, game logic is all client-side)
+- DB: PostgreSQL + Drizzle ORM (not used by game, available for future features)
+- Game state: localStorage (all scores persisted locally)
+- Fonts: Press Start 2P (headings/scores) + Inter (body)
+- Build: Vite → dist/public (served by GitHub Pages)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- `artifacts/dogxhood/src/pages/` — all game pages
+  - `LoginPage.tsx` — login gate (username → localStorage)
+  - `HomePage.tsx` — game hub with 3 game cards
+  - `HoodTapperGame.tsx` — tap game with combo multipliers
+  - `DogeDashGame.tsx` — canvas endless runner
+  - `MoonOrFudGame.tsx` — binary prediction game
+  - `LeaderboardPage.tsx` — local high scores
+  - `HowToPlayPage.tsx` — instructions
+  - `AboutPage.tsx` — tokenomics / $DXHOOD info
+- `artifacts/dogxhood/src/lib/gameStorage.ts` — localStorage helpers for all game scores
+- `artifacts/dogxhood/src/lib/useAuth.ts` — auth hook (localStorage)
+- `artifacts/dogxhood/src/components/BottomNav.tsx` — persistent bottom nav
+- `artifacts/dogxhood/public/assets/dogxhood-character.jpg` — main character image
+- `.github/workflows/pages.yml` — GitHub Actions CI/CD for GitHub Pages
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- **Login Gate**: Username-only entry, stored in localStorage. Auto-skips if already logged in.
+- **Hood Tapper**: Click/tap the dog for 60 seconds. Combo multipliers (x2→x10) for rapid taps. High score saved.
+- **Doge Dash**: Canvas endless runner. Tap/space to jump over FUD obstacles. Speed increases over time.
+- **Moon or FUD**: 10-round prediction game. Pick Moon or FUD, watch a coin flip animation, track your streak.
+- **Leaderboard**: Shows local high scores for all 3 games.
+- **How to Play + About**: Accessible without login.
+
+## Palette
+
+- Background: `#0D0D0D`
+- Primary lime: `#C8FF00`
+- Neon green accent: `#00FF41`
+- Cards: `#111111`
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Commit incrementally to GitHub after major changes
+- Push to GitHub using: `TOKEN=$(printenv GITHUB_TOKEN) && git remote set-url origin "https://dogxhood:${TOKEN}@github.com/dogxhood/DOGXHOOD.git" && git push origin main`
+- GITHUB_TOKEN is saved as a Replit secret
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Character image is in `public/assets/` — reference as `/assets/dogxhood-character.jpg` (NOT @assets import)
+- GitHub Pages build needs `PORT=3000 BASE_PATH=/` env vars — see pages.yml
+- gitPush() callback fails (no Replit GitHub OAuth) — always push via shell with the token in the remote URL
+- The `origin` remote URL must be refreshed with the token each session (token in URL)

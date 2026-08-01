@@ -1,0 +1,3 @@
+- [GitHub push method](github-push.md) — gitPush() callback has no credentials; must push via shell with token embedded in origin URL
+- [DOGXHOOD character image](dogxhood-project.md) — public path /assets/dogxhood-character.jpg, never @assets import
+- [DOGXHOOD game state](dogxhood-project.md) — all game logic + scores are localStorage only, no backend for game features

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "DOGXHOOD Game"
+description = "DOGXHOOD - A mobile-first browser meme game on Robinhood Chain. Features a login gate, multiple addictive mini-games (Hood Tapper, Doge Dash, Moon Flip), leaderboard, and How To Play page. Built around the DOGXHOOD Shiba Inu character with neon green and black branding."
+version = "1.0.0"
+id = "artifacts/dogxhood"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23716
+
+[services.development]
+run = "pnpm --filter @workspace/dogxhood run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dogxhood", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dogxhood/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23716"
+BASE_PATH = "/"

@@ -1,0 +1,36 @@
+{
+  "name": "DOGXHOOD — Meme Games on Robinhood Chain",
+  "short_name": "DOGXHOOD",
+  "description": "The #1 meme game hub on Robinhood Chain. Play Hood Tapper, Doge Dash, and Moon or FUD with $DXHOOD.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#C8FF00",
+  "orientation": "portrait-primary",
+  "categories": ["games", "entertainment"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "DOGXHOOD Game Hub"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

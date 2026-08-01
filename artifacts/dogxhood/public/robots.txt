@@ -1,2 +1,8 @@
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://dogxhood.fun/sitemap.xml
+
+# Host
+Host: dogxhood.fun

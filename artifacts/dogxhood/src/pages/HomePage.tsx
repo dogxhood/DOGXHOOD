@@ -95,6 +95,25 @@ export function HomePage() {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-3">
+          <a
+            href="https://x.com/dogxhood"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border-2 border-accent bg-card px-3 py-4 text-center font-display text-[10px] text-accent shadow-[0_0_10px_rgba(0,255,65,0.2)] transition-colors hover:bg-accent/10"
+          >
+            FOLLOW X
+          </a>
+          <a
+            href="https://t.me/playdxhood"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border-2 border-accent bg-card px-3 py-4 text-center font-display text-[10px] text-accent shadow-[0_0_10px_rgba(0,255,65,0.2)] transition-colors hover:bg-accent/10"
+          >
+            JOIN TELEGRAM
+          </a>
+        </div>
       </div>
     </motion.div>
   );

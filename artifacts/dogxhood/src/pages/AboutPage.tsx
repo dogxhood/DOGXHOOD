@@ -110,7 +110,9 @@ export function AboutPage() {
 
         <div className="space-y-4">
           <a
-            href="#"
+            href="https://t.me/playdxhood"
+            target="_blank"
+            rel="noreferrer"
             className="block w-full bg-card border-2 border-accent text-accent font-display py-4 rounded-xl text-center text-sm shadow-[0_0_10px_rgba(0,255,65,0.2)] hover:bg-accent/10 transition-colors"
           >
             JOIN TELEGRAM

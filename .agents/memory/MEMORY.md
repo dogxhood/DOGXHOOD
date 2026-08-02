@@ -1,3 +1,4 @@
 - [GitHub push method](github-push.md) — gitPush() callback has no credentials; must push via shell with token embedded in origin URL
 - [DOGXHOOD character image](dogxhood-project.md) — public path /assets/dogxhood-character.jpg, never @assets import
 - [DOGXHOOD game state](dogxhood-project.md) — all game logic + scores are localStorage only, no backend for game features
+- [GitHub Pages routing](github-pages-routing.md) — static route entry files are required so direct internal URLs return HTTP 200 instead of GitHub Pages 404

@@ -8,6 +8,7 @@ const indexFile = resolve(outputRoot, "index.html");
 
 const routes = [
   "home",
+  "dashboard",
   "about",
   "leaderboard",
   "how-to-play",

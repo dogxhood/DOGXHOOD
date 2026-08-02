@@ -55,11 +55,17 @@ export function HomePage() {
             <div className="w-12 h-12">
               <CharacterImage className="rounded-full" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs text-muted-foreground font-sans font-bold uppercase tracking-wider">Logged in as</p>
-              <p className="font-display text-sm text-primary">{user || "DEGEN"} 🐕</p>
+              <p className="font-display text-sm text-primary">{user || "DEGEN"}</p>
             </div>
           </div>
+          <Link
+            href="/dashboard"
+            className="rounded-xl border border-primary/50 bg-card px-3 py-2 font-sans text-[10px] font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary hover:text-background"
+          >
+            Dashboard
+          </Link>
         </div>
 
         <h2 className="font-display text-xl text-white mb-6 text-center">

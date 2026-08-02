@@ -13,6 +13,7 @@ import { MoonOrFudGame } from '@/pages/MoonOrFudGame';
 import { LeaderboardPage } from '@/pages/LeaderboardPage';
 import { HowToPlayPage } from '@/pages/HowToPlayPage';
 import { AboutPage } from '@/pages/AboutPage';
+import { DashboardPage } from '@/pages/DashboardPage';
 
 // Components
 import { BottomNav } from '@/components/BottomNav';
@@ -25,6 +26,7 @@ function Router() {
       <Switch>
         <Route path="/" component={LoginPage} />
         <Route path="/home" component={HomePage} />
+        <Route path="/dashboard" component={DashboardPage} />
         <Route path="/game/tapper" component={HoodTapperGame} />
         <Route path="/game/dash" component={DogeDashGame} />
         <Route path="/game/moon" component={MoonOrFudGame} />

@@ -1,11 +1,12 @@
 import { Link, useLocation } from "wouter";
-import { Home, Trophy, HelpCircle, Info } from "lucide-react";
+import { Home, Trophy, HelpCircle, Info, UserRound } from "lucide-react";
 
 export function BottomNav() {
   const [location] = useLocation();
 
   const navItems = [
     { path: "/home", icon: Home, label: "Home" },
+    { path: "/dashboard", icon: UserRound, label: "Profile" },
     { path: "/leaderboard", icon: Trophy, label: "Leaders" },
     { path: "/how-to-play", icon: HelpCircle, label: "Rules" },
     { path: "/about", icon: Info, label: "About" },

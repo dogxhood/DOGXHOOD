@@ -121,12 +121,28 @@ export function AboutPage() {
             JOIN TELEGRAM
           </a>
           <a
-            href="#"
+            href="https://x.com/dogxhood"
+            target="_blank"
+            rel="noreferrer"
             className="block w-full bg-card border-2 border-accent text-accent font-display py-4 rounded-xl text-center text-sm shadow-[0_0_10px_rgba(0,255,65,0.2)] hover:bg-accent/10 transition-colors"
           >
-            FOLLOW X
+            FOLLOW @DOGXHOOD ON X
           </a>
         </div>
+
+        <a
+          href="https://orynth.dev/projects/dogxhood"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-8 flex justify-center rounded-xl border border-accent/30 bg-card p-4 hover:border-primary transition-colors"
+          aria-label="Featured on Orynth"
+        >
+          <img
+            src="https://orynth.dev/api/badge/dogxhood?theme=light&style=default"
+            alt="Featured on Orynth"
+            className="max-w-full h-auto"
+          />
+        </a>
       </div>
     </motion.div>
   );

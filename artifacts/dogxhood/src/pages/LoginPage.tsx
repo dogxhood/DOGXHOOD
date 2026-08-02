@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "wouter";
-import { useAuth } from "@/lib/useAuth";
+import { isWalletAvailable, useAuth } from "@/lib/useAuth";
 import { CharacterImage } from "@/components/CharacterImage";
 import { motion } from "framer-motion";
+import { Wallet } from "lucide-react";
 
 export function LoginPage() {
   const [, setLocation] = useLocation();
-  const { user, login } = useAuth();
+  const { user, login, loginWithWallet } = useAuth();
   const [inputName, setInputName] = useState("");
+  const [walletLoading, setWalletLoading] = useState(false);
+  const [walletError, setWalletError] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -20,6 +23,22 @@ export function LoginPage() {
     if (inputName.trim()) {
       login(inputName.trim());
       setLocation("/home");
+    }
+  };
+
+  const handleWalletLogin = async () => {
+    setWalletError("");
+    setWalletLoading(true);
+
+    try {
+      await loginWithWallet();
+      setLocation("/home");
+    } catch (error) {
+      setWalletError(
+        error instanceof Error ? error.message : "Unable to connect your wallet.",
+      );
+    } finally {
+      setWalletLoading(false);
     }
   };
 
@@ -65,6 +84,34 @@ export function LoginPage() {
             LFG 🚀
           </motion.button>
         </form>
+
+        <div className="my-6 flex w-full items-center gap-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+          <div className="h-px flex-1 bg-accent/30" />
+          <span>or</span>
+          <div className="h-px flex-1 bg-accent/30" />
+        </div>
+
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          type="button"
+          onClick={handleWalletLogin}
+          disabled={walletLoading}
+          className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-accent bg-card py-4 font-display text-sm text-accent shadow-[0_0_10px_rgba(0,255,65,0.2)] transition-all hover:bg-accent/10 disabled:cursor-wait disabled:opacity-60"
+        >
+          <Wallet className="h-5 w-5" />
+          {walletLoading ? "CONNECTING..." : "CONNECT METAMASK"}
+        </motion.button>
+
+        <p className="mt-3 text-center font-sans text-xs text-muted-foreground">
+          {isWalletAvailable()
+            ? "Use your wallet address as your DOGXHOOD identity."
+            : "MetaMask not detected? Install it to connect your wallet."}
+        </p>
+        {walletError && (
+          <p className="mt-3 text-center font-sans text-xs font-bold text-red-400">
+            {walletError}
+          </p>
+        )}
 
         <div className="mt-12 flex gap-6 text-sm font-sans font-bold text-muted-foreground uppercase tracking-wider">
           <Link href="/how-to-play" className="hover:text-primary transition-colors">How to Play</Link>

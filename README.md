@@ -21,6 +21,7 @@ A mobile-first browser game hub for the DOGXHOOD community and the `$DXHOOD` tok
 ### Player experience
 
 - Username-only login gate with a fast local start.
+- MetaMask wallet login using the browser wallet provider, with account-change handling.
 - **Player dashboard** at `/dashboard` with:
   - Total high score across all games.
   - Best run and games-played summary.
@@ -31,7 +32,7 @@ A mobile-first browser game hub for the DOGXHOOD community and the `$DXHOOD` tok
 - Mobile-first layout with animated interactions and persistent navigation.
 - Direct route support for GitHub Pages, including `/dashboard`.
 
-> Scores and the username are stored in the browser's `localStorage`. No account or server-side score database is required to play.
+> Scores, the username, and the connected wallet session are stored in the browser's `localStorage`. No account or server-side score database is required to play.
 
 ## Tech stack
 

@@ -38,7 +38,7 @@ const games = [
 
 export function DashboardPage() {
   const [, setLocation] = useLocation();
-  const { user } = useAuth();
+  const { user, walletAddress, logout } = useAuth();
   const [scores, setScores] = useState<Scores>({ tapper: 0, dash: 0, moon: 0 });
 
   useEffect(() => {
@@ -61,8 +61,8 @@ export function DashboardPage() {
   );
   const completedGames = Object.values(scores).filter((score) => score > 0).length;
 
-  const logout = () => {
-    localStorage.removeItem("dxhood_user");
+  const handleLogout = () => {
+    logout();
     setLocation("/");
   };
 
@@ -79,15 +79,19 @@ export function DashboardPage() {
               Player dashboard
             </p>
             <h1 className="font-display text-2xl leading-tight text-white">
-              {user || storage.getUser() || "DEGEN"}
+              {walletAddress
+                ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
+                : user || storage.getUser() || "DEGEN"}
             </h1>
             <p className="mt-2 font-sans text-sm text-muted-foreground">
-              Your local DOGXHOOD progress, all in one place.
+              {walletAddress
+                ? "Connected with MetaMask. Your local progress is ready."
+                : "Your local DOGXHOOD progress, all in one place."}
             </p>
           </div>
           <button
             type="button"
-            onClick={logout}
+            onClick={handleLogout}
             aria-label="Log out"
             className="rounded-xl border border-accent/40 bg-card p-3 text-muted-foreground transition-colors hover:border-primary hover:text-primary"
           >

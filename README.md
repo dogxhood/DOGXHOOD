@@ -29,6 +29,9 @@ A mobile-first browser game hub for the DOGXHOOD community and the `$DXHOOD` tok
   - Logout control.
 - Local leaderboard for all three games.
 - How-to-play guide and DOGXHOOD information page.
+- Credentials page explaining username and MetaMask safety.
+- Cookies page explaining local browser storage and privacy controls.
+- Legal page covering entertainment use, wallet responsibility, and external services.
 - Mobile-first layout with animated interactions and persistent navigation.
 - Direct route support for GitHub Pages, including `/dashboard`.
 
@@ -117,6 +120,9 @@ artifacts/dogxhood/
 | `/leaderboard` | Local high scores |
 | `/how-to-play` | Game instructions |
 | `/about` | DOGXHOOD, token, social, and Orynth information |
+| `/credentials` | Login and wallet safety information |
+| `/cookies` | Cookie and browser storage information |
+| `/legal` | Legal information and disclaimers |
 
 ## GitHub Pages deployment
 

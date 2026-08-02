@@ -14,6 +14,9 @@ import { LeaderboardPage } from '@/pages/LeaderboardPage';
 import { HowToPlayPage } from '@/pages/HowToPlayPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { CredentialsPage } from '@/pages/CredentialsPage';
+import { CookiesPage } from '@/pages/CookiesPage';
+import { LegalPage } from '@/pages/LegalPage';
 
 // Components
 import { BottomNav } from '@/components/BottomNav';
@@ -33,6 +36,9 @@ function Router() {
         <Route path="/leaderboard" component={LeaderboardPage} />
         <Route path="/how-to-play" component={HowToPlayPage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/credentials" component={CredentialsPage} />
+        <Route path="/cookies" component={CookiesPage} />
+        <Route path="/legal" component={LegalPage} />
         <Route component={NotFound} />
       </Switch>
       <BottomNav />

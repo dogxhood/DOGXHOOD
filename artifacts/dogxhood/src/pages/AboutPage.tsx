@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CharacterImage } from "@/components/CharacterImage";
+import { Link } from "wouter";
 
 const games = [
   {
@@ -110,12 +111,6 @@ export function AboutPage() {
         <div className="space-y-4">
           <a
             href="#"
-            className="block w-full bg-primary text-background font-display py-4 rounded-xl text-center text-sm box-shadow-lime hover:scale-[1.02] transition-transform"
-          >
-            BUY $DXHOOD
-          </a>
-          <a
-            href="#"
             className="block w-full bg-card border-2 border-accent text-accent font-display py-4 rounded-xl text-center text-sm shadow-[0_0_10px_rgba(0,255,65,0.2)] hover:bg-accent/10 transition-colors"
           >
             JOIN TELEGRAM
@@ -130,11 +125,23 @@ export function AboutPage() {
           </a>
         </div>
 
+        <div className="mt-8 grid grid-cols-3 gap-2 border-t border-accent/20 pt-6 text-center">
+          <Link href="/credentials" className="font-sans text-[10px] font-bold uppercase tracking-wider text-muted-foreground hover:text-primary">
+            Credentials
+          </Link>
+          <Link href="/cookies" className="font-sans text-[10px] font-bold uppercase tracking-wider text-muted-foreground hover:text-primary">
+            Cookies
+          </Link>
+          <Link href="/legal" className="font-sans text-[10px] font-bold uppercase tracking-wider text-muted-foreground hover:text-primary">
+            Legal
+          </Link>
+        </div>
+
         <a
           href="https://orynth.dev/projects/dogxhood"
           target="_blank"
           rel="noreferrer"
-          className="mt-8 flex justify-center rounded-xl border border-accent/30 bg-card p-4 hover:border-primary transition-colors"
+          className="mt-6 flex justify-center rounded-xl border border-accent/30 bg-card p-4 hover:border-primary transition-colors"
           aria-label="Featured on Orynth"
         >
           <img
